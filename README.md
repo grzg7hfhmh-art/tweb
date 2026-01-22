@@ -160,3 +160,4 @@ npm run build
 - 참석 의사 버튼 스타일링 개선 (색상 및 폰트 스타일 통일)
 - 지도 컴포넌트 개선 (API 키 없을 시 적절한 플레이스홀더 표시)
 - 배포 URL을 https://grzg7hfhmh-art.github.io/tweb 으로 설정
+
