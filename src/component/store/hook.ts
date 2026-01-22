@@ -6,23 +6,32 @@ import { KAKAO_SDK_JS_KEY, NAVER_MAP_CLIENT_ID } from "../../env"
 
 const baseUrl = import.meta.env.BASE_URL
 
-const NAVER_MAP_URL = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NAVER_MAP_CLIENT_ID}`
+const NAVER_MAP_URL = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${NAVER_MAP_CLIENT_ID}`
 const KAKAO_SDK_URL = `${baseUrl}/kakao.min.js`
 
 export const useNaver = () => {
   const { naver, setNaver } = useContext(StoreContext)
   useEffect(() => {
     if (!NAVER_MAP_CLIENT_ID) {
+      console.warn("NAVER_MAP_CLIENT_ID is not set")
       return
     }
 
     if (!document.querySelector(`script[src="${NAVER_MAP_URL}"]`)) {
       const script = document.createElement("script")
       script.src = NAVER_MAP_URL
+      script.async = true
+      script.onload = () => {
+        if ((window as any).naver && (window as any).naver.maps) {
+          setNaver((window as any).naver)
+        } else {
+          console.error("Naver Maps API loaded but naver object not found")
+        }
+      }
+      script.onerror = (e) => {
+        console.error("Failed to load Naver Maps API", e)
+      }
       document.head.appendChild(script)
-      script.addEventListener("load", () => {
-        setNaver((window as any).naver)
-      })
     }
   }, [setNaver])
 

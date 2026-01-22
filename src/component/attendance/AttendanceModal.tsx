@@ -28,6 +28,9 @@ export const AttendanceModal = () => {
 
       await fetch(ATTENDANCE_API_URL, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
         body,
       })
 
