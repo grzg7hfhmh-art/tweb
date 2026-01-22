@@ -2,6 +2,7 @@ import { useState } from "react"
 import "./AttendanceModal.scss"
 import { useModal } from "../modal"
 import { useLanguage } from "../store/useLanguage"
+import { ATTENDANCE_API_URL } from "../../const"
 
 export const AttendanceModal = () => {
   const { closeModal } = useModal()
@@ -25,7 +26,7 @@ export const AttendanceModal = () => {
         name: name.trim(),
       })
 
-      await fetch(import.meta.env.VITE_ATTENDANCE_API_URL, {
+      await fetch(ATTENDANCE_API_URL, {
         method: "POST",
         body,
       })

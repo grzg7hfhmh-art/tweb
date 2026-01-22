@@ -154,6 +154,9 @@ export const BRIDE_TITLE = NAMES.ko.bride.title
 export const BRIDE_FATHER = NAMES.ko.bride.father
 export const BRIDE_MOTHER = NAMES.ko.bride.mother
 
+// API URLs
+export const ATTENDANCE_API_URL = "https://script.google.com/macros/s/AKfycbw87z3ol4OGH__ZyPfXCzV3p4m8bsG9_TtgYxHZrS_Ryaj69hkaulMtgpnMzjT012D2/exec"
+
 export const TRANSLATIONS = {
   ko: {
     // 표지
