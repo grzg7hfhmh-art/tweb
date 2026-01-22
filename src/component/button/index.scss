@@ -1,0 +1,34 @@
+button.button {
+  font-family: inherit;
+  background: none;
+  position: relative;
+  z-index: 3;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+
+  &.button-style-1 {
+    background-color: var(--white-color);
+    border: solid 1px var(--alt-color);
+    color: var(--alt-color);
+    border-radius: 2px;
+    padding: 0.6rem 1.2rem;
+    
+    &:hover {
+      background-color: #faf8f5;
+      border-color: var(--theme-color);
+    }
+  }
+
+  &.button-style-2 {
+    background-color: var(--alt-bg-color);
+    color: var(--dark-color);
+    border: 1px solid var(--alt-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 2px;
+    
+    &:hover {
+      background-color: var(--alt-color);
+      color: var(--white-color);
+    }
+  }
+}

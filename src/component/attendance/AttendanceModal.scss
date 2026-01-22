@@ -1,0 +1,65 @@
+.attendance-modal {
+  width: 320px;
+  padding: 28px 24px 24px;
+  background: #fff;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.side-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  button {
+    flex: 1;
+    padding: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+    font-size: 14px;
+    cursor: pointer;
+
+    &.active {
+      background: #333;
+      color: #fff;
+      border-color: #333;
+    }
+  }
+}
+
+.name-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.success {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #2e7d32;
+}

@@ -1,0 +1,48 @@
+.attendance-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+.attendance-title {
+  font-size: 1rem;
+  opacity: 0.7;
+  color: var(--theme-color);
+  margin-bottom: 8px;
+}
+
+.attendance-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.attendance-button {
+  padding: 12px 28px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--alt-bg-color);
+  color: var(--dark-color);
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--alt-color);
+    color: var(--white-color);
+  }
+}
+.attendance-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.attendance-card {
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  box-sizing: border-box;
+
+  background-color: transparent; // 👈 배경은 부모에 맡김
+}

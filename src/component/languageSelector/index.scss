@@ -1,0 +1,41 @@
+.language-selector {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 100;
+
+  .lang-btn {
+    background-color: var(--light-color);
+    border: 1px solid var(--alt-color);
+    color: var(--dark-color);
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+
+    &:hover {
+      background-color: var(--alt-bg-color);
+    }
+
+    &.active {
+      background-color: var(--alt-bg-color);
+      color: var(--dark-color);
+      border-color: var(--theme-color);
+      font-weight: 600;
+    }
+  }
+
+  @media (max-width: 500px) {
+    top: 0.5rem;
+    right: 0.5rem;
+
+    .lang-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+    }
+  }
+}
