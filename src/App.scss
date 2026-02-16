@@ -9,6 +9,7 @@
 @use "./component/modal";
 @use "./component/shareButton";
 @use "./component/languageSelector";
+@use "./component/introPoster";
 
 :root {
   --theme-color: #8b7355;
@@ -108,6 +109,9 @@ body {
   justify-content: center;
   min-height: 100vh;
   min-width: 100vw;
+  &.intro-reveal {
+    animation: intro-reveal-brightness 1.3s ease-out;
+  }
 
   .card-view {
     width: 980px;
@@ -204,6 +208,15 @@ h2 {
     font-family: "Allura";
     font-weight: 300;
     letter-spacing: 0.03em;
+  }
+}
+
+@keyframes intro-reveal-brightness {
+  from {
+    filter: brightness(0.9) saturate(0.96);
+  }
+  to {
+    filter: brightness(1) saturate(1);
   }
 }
 

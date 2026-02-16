@@ -1,4 +1,3 @@
-import { BRIDE_INFO, GROOM_INFO } from "../../const"
 import { STATIC_ONLY } from "../../env"
 import { Button } from "../button"
 import { LazyDiv } from "../lazyDiv"
@@ -29,7 +28,7 @@ export const Information1 = () => {
 
 export const Information2 = () => {
   const { openModal, closeModal } = useModal()
-  const { t, groomInfo, brideInfo } = useLanguage()
+  const { t, groomInfo } = useLanguage()
 
   return (
     <LazyDiv className="card information">
@@ -97,59 +96,6 @@ export const Information2 = () => {
           }}
         >
           {t.information.donation_info.groom_accounts_button}
-        </Button>
-        <div className="break" />
-        <Button
-          style={{ width: "100%" }}
-          onClick={() => {
-            openModal({
-              className: "donation-modal",
-              closeOnClickBackground: true,
-              header: <div className="title">{t.information.donation_info.bride_accounts}</div>,
-              content: (
-                <>
-                  {brideInfo.filter(({ account }) => !!account).map(
-                    ({ relation, name, account }) => (
-                      <div className="account-info" key={relation}>
-                        <div>
-                          <div className="name">
-                            <span className="relation">{relation}</span> {name}
-                          </div>
-                          <div>{account}</div>
-                        </div>
-                        <Button
-                          className="copy-button"
-                          onClick={async () => {
-                            if (account) {
-                              try {
-                                navigator.clipboard.writeText(account)
-                                alert(account + "\n" + t.information.donation_info.copied_alert)
-                              } catch {
-                                alert(t.information.donation_info.copy_failed_alert)
-                              }
-                            }
-                          }}
-                        >
-                          {t.information.donation_info.copy_button}
-                        </Button>
-                      </div>
-                    ),
-                  )}
-                </>
-              ),
-              footer: (
-                <Button
-                  buttonStyle="style2"
-                  className="bg-light-grey-color text-dark-color"
-                  onClick={closeModal}
-                >
-                  {t.common.close}
-                </Button>
-              ),
-            })
-          }}
-        >
-          {t.information.donation_info.bride_accounts_button}
         </Button>
       </div>
     </LazyDiv>

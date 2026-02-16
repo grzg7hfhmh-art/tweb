@@ -22,7 +22,6 @@ React로 제작된 모던한 모바일 청첩장 웹사이트 템플릿입니다
 - 다양한 기능 지원
   - 🎞️ 이미지 갤러리
   - 🗺️ 웨딩홀 위치 지도 표시
-  - 💌 방명록
   - 💬 카카오톡 공유
   - 🎯 참석 의사 전달
 
@@ -47,10 +46,10 @@ npm install
 
 3. 환경변수 설정:
 
-환경변수 샘플은 `.env.example` 파일에 저장되어 있습니다. 이 파일을 복사하여 `.env` 파일을 생성하고 각 환경변수를 수정합니다.
+루트 디렉토리에 `.env` 파일을 생성하고 아래 환경변수를 설정합니다.
 
 ```bash
-cp .env.example .env
+touch .env
 ```
 
 - `VITE_NAVER_MAP_CLIENT_ID`
@@ -60,13 +59,10 @@ cp .env.example .env
   - 카카오톡 공유하기 기능을 위한 KAKAO SDK 키
   - Kakao Developers에서 발급 가능 (JavaScript Key)
 - `VITE_SERVER_URL`
-  - 방명록과 참석 의사 전달 등을 위한 서버의 URL
+  - 참석 의사 전달(상세 폼) API 서버 URL (선택 사항)
   - 서버 소스코드: https://github.com/juhonamnam/wedding-invitation-server
-  - 설정하지 않을 경우 소스코드상에 고정된 방명록만 보여줍니다.
-    - 결혼식 끝난 이후 archive 용으로 사용 가능합니다. 지금까지 올라왔던 모든 방명록을 `offlineGuestBook.json`에 소스코드로 저장하여 read only로 보관해보세요.
 - `VITE_STATIC_ONLY`
-  - 방명록과 참석 의사 전달 기능은 별도의 서버를 호스팅해야 합니다.
-  - 이 기능을 사용하지 않고 정적 웹사이트로만 운영하려면 이 환경변수를 `true`로 설정합니다.
+  - 일부 동적 요소를 정적 모드로 표시하고 싶을 때 `true`로 설정 (선택 사항)
 
 4. 개발 서버 실행:
 
@@ -80,11 +76,11 @@ npm run dev
    - 신랑 신부 이름
    - 결혼식 날짜
    - 예식장 위치
-   - 연락처 및 축의금 계좌 정보
+   - 축의금 계좌 정보 및 참석 API URL
 
 2. 이미지 교체
    - `src/images`: 표지 이미지 및 갤러리 이미지
-   - `public/preview_image.png`: SNS 공유용 미리보기 이미지
+   - `public/preview_image.jpg`: SNS 공유용 미리보기 이미지
 
 3. 글귀 수정
    - `src/component/location`: 예식장 위치 관련 글귀 수정
@@ -113,7 +109,7 @@ npm run dev
      - `VITE_KAKAO_SDK_JS_KEY`
    - Variables:
      - `VITE_SERVER_URL`
-     - `VITE_STATIC_ONLY`
+     - `VITE_STATIC_ONLY` (선택)
 
 ### 다른 호스팅 플랫폼
 
@@ -160,4 +156,3 @@ npm run build
 - 참석 의사 버튼 스타일링 개선 (색상 및 폰트 스타일 통일)
 - 지도 컴포넌트 개선 (API 키 없을 시 적절한 플레이스홀더 표시)
 - 배포 URL을 https://grzg7hfhmh-art.github.io/tweb 으로 설정
-

@@ -7,7 +7,9 @@ import pkg from "./package.json"
 import { createHtmlPlugin } from "vite-plugin-html"
 import {
   GROOM_FULLNAME,
+  GROOM_FIRSTNAME,
   BRIDE_FULLNAME,
+  BRIDE_FIRSTNAME,
   WEDDING_DATE,
   LOCATION,
   WEDDING_DATE_FORMAT,
@@ -33,7 +35,9 @@ export default defineConfig({
       inject: {
         data: {
           GROOM_FULLNAME,
+          GROOM_FIRSTNAME,
           BRIDE_FULLNAME,
+          BRIDE_FIRSTNAME,
           DESCRIPTION: `${WEDDING_DATE.format(WEDDING_DATE_FORMAT)} ${LOCATION}`,
         },
       },

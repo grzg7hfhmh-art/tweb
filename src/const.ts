@@ -101,20 +101,20 @@ export const getCurrentInfo = (language: "ko" | "ja") => {
       {
         relation: relations.groom,
         name: names.groom.fullName,
-        phone: "010-0000-0000",
-        account: "하나은행 00000000000000",
+        phone: "010-7674-7365",
+        account: "3333066249542 카카오뱅크",
       },
       {
         relation: relations.groom_father,
         name: names.groom.father,
-        phone: "010-0000-0000",
-        account: "신한은행 000000000000",
+        phone: "010-9121-8091",
+        account: "83902008490 농협",
       },
       {
         relation: relations.groom_mother,
         name: names.groom.mother,
-        phone: "010-0000-0000",
-        account: "국민은행 000000000000",
+        phone: "010-5303-7365",
+        account: "86802004211 농협",
       },
     ],
     BRIDE_INFO: [
@@ -122,19 +122,19 @@ export const getCurrentInfo = (language: "ko" | "ja") => {
         relation: relations.bride,
         name: names.bride.fullName,
         phone: "010-0000-0000",
-        account: "우리은행 0000000000000",
+        account: "",
       },
       {
         relation: relations.bride_father,
         name: names.bride.father,
         phone: "010-0000-0000",
-        account: "하나은행 00000000000",
+        account: "",
       },
       {
         relation: relations.bride_mother,
         name: names.bride.mother,
         phone: "010-0000-0000",
-        account: "하나은행 00000000000000",
+        account: "",
       },
     ]
   }
@@ -229,9 +229,9 @@ export const TRANSLATIONS = {
       },
       donation_info: {
         content: "참석이 어려워 직접 축하해주지 못하는\n분들을 위해 계좌번호를 기재하였습니다.\n넓은 마음으로 양해 부탁드립니다.",
-        groom_accounts: "신랑측 계좌번호",
+        groom_accounts: "계좌번호",
         bride_accounts: "신부측 계좌번호",
-        groom_accounts_button: "신랑측 계좌번호 보기",
+        groom_accounts_button: "계좌번호 보기",
         bride_accounts_button: "신부측 계좌번호 보기",
         copy_button: "복사하기",
         copied_alert: "복사되었습니다.",

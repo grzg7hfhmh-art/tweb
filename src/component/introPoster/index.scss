@@ -1,0 +1,90 @@
+.intro-poster {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.42s ease;
+
+  &.closing {
+    opacity: 0;
+  }
+
+  .poster-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(95%) brightness(78%);
+  }
+
+  .poster-dim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.28) 55%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  }
+
+  .poster-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: calc(env(safe-area-inset-top, 0px) + 5rem) 1.5rem
+      calc(env(safe-area-inset-bottom, 0px) + 2rem);
+    text-align: center;
+  }
+
+  .poster-title {
+    color: #f0e8df;
+    font-family: "Allura";
+    font-size: 3.6rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+  }
+
+  .poster-names {
+    color: #f8f5f1;
+    font-family: "Allura";
+    font-size: 2.0rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+
+  .poster-date {
+    color: #f3ece5;
+    font-size: 1.02rem;
+    letter-spacing: 0.14em;
+  }
+
+  .poster-spacer {
+    flex: 1;
+  }
+
+  .poster-hint {
+    color: #e8ddd2;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    opacity: 0.95;
+    animation: intro-poster-pulse 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes intro-poster-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}

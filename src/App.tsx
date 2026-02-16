@@ -11,14 +11,26 @@ import { ShareButton } from "./component/shareButton"
 import { STATIC_ONLY } from "./env"
 import { LanguageSelector } from "./component/languageSelector"
 import { AttendanceButton } from "./component/attendance/AttendanceButton"
+import { IntroPoster } from "./component/introPoster"
+import { useState } from "react"
 
 
 
 
 
 function App() {
+  const [introTransitioning, setIntroTransitioning] = useState(false)
+
   return (
-    <div className="background">
+    <div className={`background${introTransitioning ? " intro-reveal" : ""}`}>
+      <IntroPoster
+        onDismissStart={() => {
+          setIntroTransitioning(true)
+          window.setTimeout(() => {
+            setIntroTransitioning(false)
+          }, 3000)
+        }}
+      />
       {/* <BGEffect /> */}
       <LanguageSelector />
       <div className="card-view">
