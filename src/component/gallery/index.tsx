@@ -6,12 +6,6 @@ import { useModal } from "../modal"
 import { useLanguage } from "../store/useLanguage"
 import { GALLERY_IMAGES } from "../../images"
 
-const CAROUSEL_ITEMS = GALLERY_IMAGES.map((item, idx) => (
-  <div className="carousel-item" key={idx}>
-    <img src={item} draggable={false} alt={`${idx}`} />
-  </div>
-))
-
 const DRAG_SENSITIVITY = 15
 
 type Status =
@@ -35,6 +29,32 @@ export const Gallery = () => {
   const { openModal, closeModal } = useModal()
   const { t } = useLanguage()
   const carouselRef = useRef<HTMLDivElement>({} as HTMLDivElement)
+  const imageCount = GALLERY_IMAGES.length
+
+  const openPhotoModal = useCallback(
+    (image: string, idx: number) => {
+      openModal({
+        className: "gallery-photo-modal",
+        closeOnClickBackground: true,
+        content: (
+          <div className="photo-viewer">
+            <img src={image} alt={`${idx}`} draggable={false} />
+          </div>
+        ),
+      })
+    },
+    [openModal],
+  )
+
+  const CAROUSEL_ITEMS = useMemo(
+    () =>
+      GALLERY_IMAGES.map((item, idx) => (
+        <div className="carousel-item" key={idx}>
+          <img src={item} draggable={false} alt={`${idx}`} />
+        </div>
+      )),
+    [],
+  )
 
   useEffect(() => {
     // preload images
@@ -143,10 +163,10 @@ export const Gallery = () => {
           currentTranslateX: -carouselWidth,
         })
         setStatus("stationary")
-        setSlide((slide + move + CAROUSEL_ITEMS.length) % CAROUSEL_ITEMS.length)
+        setSlide((slide + move + imageCount) % imageCount)
       }, 300)
     },
-    [],
+    [imageCount],
   )
 
   const move = useCallback((srcIdx: number, dstIdx: number) => {
@@ -218,10 +238,11 @@ export const Gallery = () => {
 
     if (status === "clicked") {
       if (clickMove === "left") {
-        move(slide, (slide + CAROUSEL_ITEMS.length - 1) % CAROUSEL_ITEMS.length)
+        move(slide, (slide + imageCount - 1) % imageCount)
       } else if (clickMove === "right") {
-        move(slide, (slide + 1) % CAROUSEL_ITEMS.length)
+        move(slide, (slide + 1) % imageCount)
       } else {
+        openPhotoModal(GALLERY_IMAGES[slide], slide)
         setStatus("stationary")
       }
     } else if (status === "dragging") {
@@ -229,7 +250,7 @@ export const Gallery = () => {
     } else if (status === "clickCanceled") {
       setStatus("stationary")
     }
-  }, [dragEnd, move])
+  }, [dragEnd, imageCount, move, openPhotoModal, slide])
 
   useEffect(() => {
     const carouselElement = carouselRef.current
