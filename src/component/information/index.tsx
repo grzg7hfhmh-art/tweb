@@ -54,9 +54,17 @@ export const Information2 = () => {
               header: <div className="title">{t.information.donation_info.groom_accounts}</div>,
               content: (
                 <>
-                  {groomInfo.filter(({ account }) => !!account).map(
-                    ({ relation, name, account }) => (
-                      <div className="account-info" key={relation}>
+                  {groomInfo
+                    .flatMap(({ relation, name, account, account2 }) =>
+                      [account, account2].filter(Boolean).map((value, idx) => ({
+                        relation,
+                        name,
+                        account: value as string,
+                        key: `${relation}-${name}-${idx}`,
+                      })),
+                    )
+                    .map(({ relation, name, account, key }) => (
+                      <div className="account-info" key={key}>
                         <div>
                           <div className="name">
                             <span className="relation">{relation}</span> {name}
@@ -79,8 +87,7 @@ export const Information2 = () => {
                           {t.information.donation_info.copy_button}
                         </Button>
                       </div>
-                    ),
-                  )}
+                    ))}
                 </>
               ),
               footer: (

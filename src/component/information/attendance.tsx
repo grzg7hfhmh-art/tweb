@@ -118,7 +118,7 @@ export const AttendanceInfo = () => {
 }
 
 const AttendanceModalContent = () => {
-  const { closeModal } = useModal()
+  const { openModal, closeModal } = useModal()
   const { t } = useLanguage()
   const inputRef = useRef({ side: {}, meal: {} }) as React.RefObject<{
     side: {
@@ -134,6 +134,26 @@ const AttendanceModalContent = () => {
     count: HTMLInputElement
   }>
   const [loading, setLoading] = useState(false)
+  const openSubmitResultModal = (message: string) => {
+    closeModal()
+    setTimeout(() => {
+      openModal({
+        className: "attendance-result-modal",
+        closeOnClickBackground: true,
+        header: <div className="title">{t.attendance.modal_title}</div>,
+        content: <div className="result-message">{message}</div>,
+        footer: (
+          <Button
+            buttonStyle="style2"
+            className="bg-light-grey-color text-dark-color"
+            onClick={closeModal}
+          >
+            {t.common.close}
+          </Button>
+        ),
+      })
+    }, 0)
+  }
 
   return (
     <form
@@ -197,10 +217,9 @@ const AttendanceModalContent = () => {
             throw new Error(res.statusText)
           }
 
-          alert(t.attendance.success)
-          closeModal()
+          openSubmitResultModal(t.attendance.success)
         } catch {
-          alert(t.attendance.submit_failed)
+          openSubmitResultModal(t.attendance.submit_failed)
         } finally {
           setLoading(false)
         }

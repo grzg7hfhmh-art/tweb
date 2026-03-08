@@ -5,8 +5,20 @@ import { TRANSLATIONS, getCurrentNames, NAMES, getCurrentInfo } from "../../cons
 export const useLanguage = (): LanguageContextType & {
   t: (typeof TRANSLATIONS)[keyof typeof TRANSLATIONS]
   names: (typeof NAMES)[keyof typeof NAMES]
-  groomInfo: Array<{ relation: string; name: string; phone: string; account: string }>
-  brideInfo: Array<{ relation: string; name: string; phone: string; account: string }>
+  groomInfo: Array<{
+    relation: string
+    name: string
+    phone: string
+    account: string
+    account2?: string
+  }>
+  brideInfo: Array<{
+    relation: string
+    name: string
+    phone: string
+    account: string
+    account2?: string
+  }>
 } => {
   const context = useContext(LanguageContext)
 

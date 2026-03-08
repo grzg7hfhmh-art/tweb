@@ -1,11 +1,9 @@
 import { useState } from "react"
 import "./AttendanceModal.scss"
-import { useModal } from "../modal"
 import { useLanguage } from "../store/useLanguage"
 import { ATTENDANCE_API_URL } from "../../env"
 
 export const AttendanceModal = () => {
-  const { closeModal } = useModal()
   const { t } = useLanguage()
   const [side, setSide] = useState<"groom" | "bride" | null>(null)
   const [name, setName] = useState("")
@@ -43,9 +41,6 @@ export const AttendanceModal = () => {
       }
 
       setSuccess(true)
-      setTimeout(() => {
-        closeModal()
-      }, 1200)
     } catch (e) {
       alert(t.attendance.form.send_failed_alert)
     } finally {

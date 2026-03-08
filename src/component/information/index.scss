@@ -201,3 +201,31 @@
     }
   }
 }
+
+.attendance-result-modal {
+  width: 22rem;
+
+  .header {
+    .title {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--theme-color);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--dark-grey-color);
+    }
+  }
+
+  .content {
+    padding: 1.2rem 1rem;
+
+    .result-message {
+      text-align: center;
+      line-height: 1.5rem;
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+  }
+}
