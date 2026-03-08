@@ -154,9 +154,6 @@ export const BRIDE_TITLE = NAMES.ko.bride.title
 export const BRIDE_FATHER = NAMES.ko.bride.father
 export const BRIDE_MOTHER = NAMES.ko.bride.mother
 
-// API URLs
-export const ATTENDANCE_API_URL = "https://script.google.com/macros/s/AKfycbw87z3ol4OGH__ZyPfXCzV3p4m8bsG9_TtgYxHZrS_Ryaj69hkaulMtgpnMzjT012D2/exec"
-
 export const TRANSLATIONS = {
   ko: {
     // 표지
@@ -393,10 +390,10 @@ export const TRANSLATIONS = {
       },
       donation_info: {
         content: "出席が難しい直接お祝いしていただけない\n方々のために口座番号を記載いたしました。\n広いお心でご了承くださいますようお願い申し上げます。",
-        groom_accounts: "新郎側口座番号",
-        bride_accounts: "新婦側口座番号",
-        groom_accounts_button: "新郎側口座番号を見る",
-        bride_accounts_button: "新婦側口座番号を見る",
+        groom_accounts: "口座番号",
+        bride_accounts: "口座番号",
+        groom_accounts_button: "口座番号を見る",
+        bride_accounts_button: "口座番号を見る",
         copy_button: "コピー",
         copied_alert: "コピーされました。",
         copy_failed_alert: "コピーに失敗しました。"

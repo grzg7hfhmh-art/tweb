@@ -195,6 +195,18 @@ body {
         animation-name: inherit !important;
         animation-duration: inherit !important;
       }
+
+      &.creator-credit {
+        padding: 0.9rem 1.5rem;
+        text-align: center;
+
+        small {
+          font-size: 0.62rem;
+          letter-spacing: 0.12em;
+          color: color-mix(in srgb, var(--dark-color) 50%, transparent);
+          text-transform: uppercase;
+        }
+      }
     }
   
 

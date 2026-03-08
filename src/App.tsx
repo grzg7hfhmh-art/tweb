@@ -70,7 +70,9 @@ function App() {
         <LazyDiv className="card-group">
           <AttendanceButton />
         </LazyDiv>
-
+        <LazyDiv className="footer creator-credit">
+          <small>Crafted by Seongjun</small>
+        </LazyDiv>
       </div>
     </div>
   )

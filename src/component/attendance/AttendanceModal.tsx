@@ -2,7 +2,7 @@ import { useState } from "react"
 import "./AttendanceModal.scss"
 import { useModal } from "../modal"
 import { useLanguage } from "../store/useLanguage"
-import { ATTENDANCE_API_URL } from "../../const"
+import { ATTENDANCE_API_URL } from "../../env"
 
 export const AttendanceModal = () => {
   const { closeModal } = useModal()
@@ -21,18 +21,26 @@ export const AttendanceModal = () => {
     setLoading(true)
 
     try {
+      if (!ATTENDANCE_API_URL) {
+        throw new Error("ATTENDANCE_API_URL is not set")
+      }
+
       const body = new URLSearchParams({
         side,
         name: name.trim(),
       })
 
-      await fetch(ATTENDANCE_API_URL, {
+      const response = await fetch(ATTENDANCE_API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body,
       })
+
+      if (!response.ok) {
+        throw new Error(`Attendance submission failed: ${response.status}`)
+      }
 
       setSuccess(true)
       setTimeout(() => {
