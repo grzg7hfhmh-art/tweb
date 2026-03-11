@@ -7,12 +7,22 @@ export const AttendanceModal = () => {
   const { t } = useLanguage()
   const [side, setSide] = useState<"groom" | "bride" | null>(null)
   const [name, setName] = useState("")
+  const [count, setCount] = useState("1")
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
 
   const submit = async () => {
     if (!side || !name.trim()) {
       alert(t.attendance.form.enter_name_and_side_alert)
+      return
+    }
+    const parsedCount = Number(count)
+    if (Number.isNaN(parsedCount)) {
+      alert(t.attendance.form.enter_count_alert)
+      return
+    }
+    if (parsedCount < 1) {
+      alert(t.attendance.form.count_min_alert.replace("{min}", "1"))
       return
     }
 
@@ -26,6 +36,7 @@ export const AttendanceModal = () => {
       const body = new URLSearchParams({
         side,
         name: name.trim(),
+        count: String(parsedCount),
       })
 
       const response = await fetch(ATTENDANCE_API_URL, {
@@ -73,6 +84,16 @@ export const AttendanceModal = () => {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
+      <div className="count-input-group">
+        <label className="count-label">{t.attendance.form.count_label}</label>
+        <input
+          className="count-input"
+          type="number"
+          min={1}
+          value={count}
+          onChange={(e) => setCount(e.target.value)}
+        />
+      </div>
 
       <button className="submit-button" onClick={submit} disabled={loading}>
         {loading ? t.attendance.submit : t.attendance.form.submit_button}

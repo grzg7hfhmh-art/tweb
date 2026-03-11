@@ -37,7 +37,27 @@
 .name-input {
   width: 100%;
   padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.count-input-group {
   margin-bottom: 18px;
+  text-align: left;
+}
+
+.count-label {
+  display: block;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.count-input {
+  width: 100%;
+  padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
